@@ -1,0 +1,35 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@lspriv/wc-plugin-multiple':
+        specifier: ^1.0.1
+        version: 1.0.3(@lspriv/wx-calendar@1.8.0-alpha.0)
+      '@lspriv/wx-calendar':
+        specifier: ^1.8.0-alpha.0
+        version: 1.8.0-alpha.0
+
+packages:
+
+  '@lspriv/wc-plugin-multiple@1.0.3':
+    resolution: {integrity: sha512-u82VXgatcVewJWHNpRQ49tMmpGNxQwKeLSxBg+rirOwx+DEqJs8Y50fVJlhJVOH4xiYd2vGX6Yb7aj8AeDL/tA==}
+    peerDependencies:
+      '@lspriv/wx-calendar': ^1.7.1
+
+  '@lspriv/wx-calendar@1.8.0-alpha.0':
+    resolution: {integrity: sha512-S9n4a+jHYUXGAij5PvTa5Z7dUTPEzVlMd9yjGDKe+8VrdA25L23rq66yBZr5FTJN63S9wujso8666BmKPIATRw==}
+    engines: {node: '>=16.13.0'}
+
+snapshots:
+
+  '@lspriv/wc-plugin-multiple@1.0.3(@lspriv/wx-calendar@1.8.0-alpha.0)':
+    dependencies:
+      '@lspriv/wx-calendar': 1.8.0-alpha.0
+
+  '@lspriv/wx-calendar@1.8.0-alpha.0': {}
