@@ -24,7 +24,7 @@ npm i @lspriv/wc-plugin-lunar -S
 ```
 ```javascript
 const { WxCalendar } = require('@lspriv/wx-calendar/lib');
-const { LunarPlugin, LUNAR_PLUGIN_KEY } = require('@lspriv/wc-plugin-disabled');
+const { LunarPlugin, LUNAR_PLUGIN_KEY } = require('@lspriv/wc-plugin-lunar');
 
 WxCalendar.use(LunarPlugin);
 
