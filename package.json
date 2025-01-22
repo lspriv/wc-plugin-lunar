@@ -59,6 +59,6 @@
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
-    "@lspriv/wx-calendar": "^1.8.0-alpha.0"
+    "@lspriv/wx-calendar": "^1.8.3-alpha.1"
   }
 }
