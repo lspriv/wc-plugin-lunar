@@ -21,9 +21,24 @@ import {
 
 // eslint-disable-next-line import/no-unresolved
 import { Lunar } from './lunar';
+export interface LunarOptions {
+  markColor?: string;
+  nyColor?: string;
+  fdColor?: string;
+}
 
 export class LunarPlugin implements Plugin {
   public static KEY = 'lunar' as const;
+
+  private options: Required<LunarOptions>;
+
+  constructor(options: LunarOptions) {
+    this.options = {
+      markColor: options.markColor || 'var(--wc-solar-color)',
+      nyColor: options.nyColor || '#F56C6C',
+      fdColor: options.fdColor || '#409EFF'
+    };
+  }
 
   public getLunar(date: CalendarDay): ReturnType<(typeof Lunar)['lunar']> {
     return Lunar.lunar(date.year, date.month, date.day);
@@ -36,7 +51,7 @@ export class LunarPlugin implements Plugin {
       festival: {
         text: lunar?.solar || lunar?.lunarDay || '',
         style: {
-          color: lunar?.solar ? 'var(--wc-solar-color)' : ''
+          color: lunar?.solar ? this.options.markColor : ''
         }
       }
     };
@@ -45,6 +60,7 @@ export class LunarPlugin implements Plugin {
   public PLUGIN_TRACK_YEAR(year: WcYear): TrackYearResult {
     let lunarYear: string = '';
     const marks: WcAnnualMarks = new Map();
+    const { nyColor, fdColor } = this.options;
     for (let i = 0; i < 12; i++) {
       const days = i === 1 && isLeapYear(year.year) ? GREGORIAN_MONTH_DAYS[i] + 1 : GREGORIAN_MONTH_DAYS[i];
       const month = i + 1;
@@ -55,7 +71,7 @@ export class LunarPlugin implements Plugin {
         if (lunar?.day === 1) {
           const key = getAnnualMarkKey({ month, day });
           const set: WcAnnualMark = {};
-          set.sub = lunar?.month === 1 ? '#F56C6C' : '#409EFF';
+          set.sub = lunar?.month === 1 ? nyColor : fdColor;
           marks.set(key, set);
         }
       }
@@ -63,8 +79,8 @@ export class LunarPlugin implements Plugin {
 
     return {
       subinfo: [
-        { text: lunarYear, color: '#F56C6C' },
-        { text: '农历初一', color: '#409EFF' }
+        { text: lunarYear, color: nyColor },
+        { text: '农历初一', color: fdColor }
       ],
       marks
     };
