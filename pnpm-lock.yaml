@@ -15,8 +15,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       '@lspriv/wx-calendar':
-        specifier: ^1.8.0-alpha.0
-        version: 1.8.0-alpha.0
+        specifier: ^1.8.3-alpha.1
+        version: 1.8.3-alpha.1
       '@rollup/plugin-commonjs':
         specifier: ^25.0.7
         version: 25.0.8(rollup@4.27.4)
@@ -205,8 +205,8 @@ packages:
   '@lspriv/wc-shared@1.2.0':
     resolution: {integrity: sha512-wW8dzuYsdGjrLJFoKvK6w2JvjXwkTj5iPY2pB6C4Tpzw3xNbvUyxc84ZyvrU/sByAshsut9Afo5IXA8bvieEtQ==}
 
-  '@lspriv/wx-calendar@1.8.0-alpha.0':
-    resolution: {integrity: sha512-S9n4a+jHYUXGAij5PvTa5Z7dUTPEzVlMd9yjGDKe+8VrdA25L23rq66yBZr5FTJN63S9wujso8666BmKPIATRw==}
+  '@lspriv/wx-calendar@1.8.3-alpha.1':
+    resolution: {integrity: sha512-/VZ6MCWqylrI2eudM9xcgk0bwCYdhC2nQV8omRsN2EK0KChTT27VBQd0DENjAnUNC+812bGyUNuGB8/iScR9QA==}
     engines: {node: '>=16.13.0'}
 
   '@nodelib/fs.scandir@2.1.5':
@@ -2312,7 +2312,7 @@ snapshots:
 
   '@lspriv/wc-shared@1.2.0': {}
 
-  '@lspriv/wx-calendar@1.8.0-alpha.0': {}
+  '@lspriv/wx-calendar@1.8.3-alpha.1': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
