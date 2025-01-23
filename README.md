@@ -39,6 +39,13 @@ Page({
 })
 ```
 
+#### 插件选项
+[***`markColor`***](#cli) `string` 农历节气下标颜色，默认 --wc-solar-color
+
+[***`nyColor`***](#cli) `string` 年面板大年初一颜色，默认 #F56C6C
+
+[***`nyColor`***](#cli) `string` 年面板农历普通月初一颜色，默认 #409EFF
+
 ### 关于
 
 >     有任何问题或是需求请到 `Issues` 面板提交
