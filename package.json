@@ -1,6 +1,6 @@
 {
   "name": "@lspriv/wc-plugin-lunar",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "小程序日历组件农历插件",
   "main": "./dist/index.js",
   "types": "./types/index.d.ts",
@@ -59,6 +59,6 @@
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
-    "@lspriv/wx-calendar": "^1.8.0-alpha.0"
+    "@lspriv/wx-calendar": "^1.8.3-alpha.1"
   }
 }
