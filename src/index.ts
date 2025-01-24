@@ -32,11 +32,11 @@ export class LunarPlugin implements Plugin {
 
   private options: Required<LunarOptions>;
 
-  constructor(options: LunarOptions) {
+  constructor(options?: LunarOptions) {
     this.options = {
-      markColor: options.markColor || 'var(--wc-solar-color)',
-      nyColor: options.nyColor || '#F56C6C',
-      fdColor: options.fdColor || '#409EFF'
+      markColor: options?.markColor || 'var(--wc-solar-color)',
+      nyColor: options?.nyColor || '#F56C6C',
+      fdColor: options?.fdColor || '#409EFF'
     };
   }
 
