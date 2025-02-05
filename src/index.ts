@@ -32,6 +32,8 @@ export class LunarPlugin implements Plugin {
 
   private options: Required<LunarOptions>;
 
+  public PRINTER_ALWAYS_DATE_MARK = true;
+
   constructor(options?: LunarOptions) {
     this.options = {
       markColor: options?.markColor || 'var(--wc-solar-color)',
