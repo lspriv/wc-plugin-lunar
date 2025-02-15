@@ -4,7 +4,7 @@
  * See File LICENSE for detail or copy at https://opensource.org/licenses/MIT
  * @Description: Description
  * @Author: lspriv
- * @LastEditTime: 2024-11-25 23:10:23
+ * @LastEditTime: 2025-02-15 13:12:25
  */
 import {
   type Plugin,
@@ -14,6 +14,8 @@ import {
   type TrackYearResult,
   type WcAnnualMarks,
   type WcAnnualMark,
+  type PluginService,
+  getStyle,
   isLeapYear,
   getAnnualMarkKey,
   GREGORIAN_MONTH_DAYS
@@ -31,15 +33,31 @@ export class LunarPlugin implements Plugin {
   public static KEY = 'lunar' as const;
 
   private options: Required<LunarOptions>;
+  private style: string = '';
+  private hasDefFdColor: boolean;
+  private service: PluginService;
 
   public PRINTER_ALWAYS_DATE_MARK = true;
 
   constructor(options?: LunarOptions) {
+    this.hasDefFdColor = !!options?.fdColor;
     this.options = {
       markColor: options?.markColor || 'var(--wc-solar-color)',
       nyColor: options?.nyColor || '#F56C6C',
       fdColor: options?.fdColor || '#409EFF'
     };
+  }
+
+  PLUGIN_ON_INITIALIZE(service: PluginService) {
+    this.service = service;
+  }
+
+  private getFdColor(style): string {
+    if (!this.hasDefFdColor && style !== this.style) {
+      this.style = style;
+      this.options.fdColor = getStyle(style, '--wc-primary') || this.options.fdColor;
+    }
+    return this.options.fdColor;
   }
 
   public getLunar(date: CalendarDay): ReturnType<(typeof Lunar)['lunar']> {
@@ -62,7 +80,8 @@ export class LunarPlugin implements Plugin {
   public PLUGIN_TRACK_YEAR(year: WcYear): TrackYearResult {
     let lunarYear: string = '';
     const marks: WcAnnualMarks = new Map();
-    const { nyColor, fdColor } = this.options;
+    const { nyColor } = this.options;
+    const fdColor = this.getFdColor(this.service.component.data.style);
     for (let i = 0; i < 12; i++) {
       const days = i === 1 && isLeapYear(year.year) ? GREGORIAN_MONTH_DAYS[i] + 1 : GREGORIAN_MONTH_DAYS[i];
       const month = i + 1;
